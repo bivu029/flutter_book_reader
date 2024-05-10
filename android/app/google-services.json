@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "679023608384",
+    "project_id": "bazarbook-db8a0",
+    "storage_bucket": "bazarbook-db8a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679023608384:android:84addcf28a21a8d38d55a5",
+        "android_client_info": {
+          "package_name": "com.example.bookbazar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "679023608384-9dlb1og0fql550a074ovmdpj4bopcf03.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookbazar",
+            "certificate_hash": "e55d7c857bcfeaad0fe1cfa0003aba3ac72a5bd3"
+          }
+        },
+        {
+          "client_id": "679023608384-h1gegpp27pnaamkpo3hari832dtkmajq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZR9sJiTRGmPfsjKs_fk-ZbpxvBZYc8PY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "679023608384-h1gegpp27pnaamkpo3hari832dtkmajq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
