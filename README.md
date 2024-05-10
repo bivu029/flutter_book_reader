@@ -58,7 +58,9 @@ App architecure =>
 +--------v---------+ +--------v---------+ +-------v----------+ +-----v------+
 |   DashboardPage  | |   LibraryPage    | |   CategoriPage   | | ProfilePage|
 +------------------+ +------------------+ +------------------+ +------------+
-         |                   |                   |                   
+         |                   |ReadHistory       |  Search   | 
+         |                    Favorites           Categary
+         |                    Downloads             |
          +---------+         +---------+         +---------+         
                    |                   |                   |         
                    |                   |                   |         
