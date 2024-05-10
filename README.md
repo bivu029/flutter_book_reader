@@ -23,6 +23,61 @@ A beautifully crafted book reader application built with Flutter, Google's open-
 This app uses the BLoC (Business Logic Component) pattern for state management, which helps to separate the presentation layer from the business logic. The main bottom navigation structure is built using the provided code, which utilizes the GoRouter library for routing and navigation.
 
 ## How it Works
+```bash
+App architecure =>
++-------------------+
+                     |     App Starts    |
+                     +-------+--+---------+
+                             |  |
+                             |  |
+                             |  | First Time User?
+                             |  |
+                             |  |No
+                             |  +-------------------+
+                             |                      |Yes
+                             |                      |
+                             |                      |
+                             |                      v
+                             |                +-----------+
+                             |                |  IsFirstTimer |
+                             |                +-----------+
+                             |                      |
+                             |                      |
+                             v                      |
+                     +-----------+                  |
+                     |  AuthPage |<------------------+
+                     +-----------+
+                             |
+                             v
+                     +---------------+
+                     | MainNavigationBar |
+                     +-------+-------+
+                             |
+         +---------------------------------------+
+         |                   |                   |                   |
++--------v---------+ +--------v---------+ +-------v----------+ +-----v------+
+|   DashboardPage  | |   LibraryPage    | |   CategoriPage   | | ProfilePage|
++------------------+ +------------------+ +------------------+ +------------+
+         |                   |                   |                   
+         +---------+         +---------+         +---------+         
+                   |                   |                   |         
+                   |                   |                   |         
+                   v                   v                   v         
+                +-----------+      +-----------+      +-----------+  
+                | BookDetails|      | BookDetails|      | BookDetails| 
+                +-----------+      +-----------+      +-----------+  
+                      |                   |                   |      
+                      |                   |                   |      
+                      +-------------------+-------------------+      
+                                          |                          
+                                          v                          
+                                    +-----------+                    
+                                    | BookContent|                   
+                                    +-----------+                    
+                                                                     
+                                                                     
+                                                                     
+```
 
 1. The `AppRoute` class is responsible for defining the app's routes and navigation structure.
 2. The `GoRouter` is initialized with the initial route and various other routes, including routes for authentication, book details, search, and more.
