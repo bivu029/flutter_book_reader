@@ -80,7 +80,115 @@ App architecure =>
                                                                      
                                                                      
 ```
+Certainly! Here's a revised version of your README file with the added question-answer section:
 
+markdown
+
+# Flutter Book Reader
+
+[![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+<p align="center">
+ <img src="https://i.ibb.co/BLFTbmx/book-reader-app-logo.png" alt="Book Reader App Logo" width="200">
+</p>
+
+A beautifully crafted book reader application built with Flutter, Google's open-source UI toolkit for building natively compiled, multi-platform applications from a single codebase.
+
+## Features
+
+- 📖 **Immersive Reading Experience**: Dive into captivating books in various formats.
+- 🔖 **Bookmarks**: Keep track of your favorite moments with easy-to-use bookmarks.
+- 🔍 **Full-Text Search**: Quickly find specific passages or quotes within books.
+- 🌓 **Day & Night Modes**: Customize your reading environment with light and dark themes.
+- 🔁 **Orientation Support**: Read comfortably in both portrait and landscape modes.
+- 🔤 **Typography Customization**: Adjust font size, style, and background color to suit your preferences.
+
+## Architecture
+
+This app uses the BLoC (Business Logic Component) pattern for state management, which helps to separate the presentation layer from the business logic. The main bottom navigation structure is built using the provided code, which utilizes the GoRouter library for routing and navigation.
+
+## How it Works
+```bash
+App architecture =>
++-------------------+
+                     |     App Starts    |
+                     +-------+--+---------+
+                             |  |
+                             |  |
+                             |  | First Time User?
+                             |  |
+                             |  |No
+                             |  +-------------------+
+                             |                      |Yes
+                             |                      |
+                             |                      |
+                             |                      v
+                             |                +-----------+
+                             |                |  IsFirstTimer |
+                             |                +-----------+
+                             |                      |
+                             |                      |
+                             v                      |
+                     +-----------+                  |
+                     |  AuthPage |<------------------+
+                     +-----------+
+                             |
+                             v
+                     +---------------+
+                     | MainNavigationBar |
+                     +-------+-------+
+                             |
+         +---------------------------------------+
+         |                   |                   |                   |
++--------v---------+ +--------v---------+ +-------v----------+ +-----v------+
+|   DashboardPage  | |   LibraryPage    | |   CategoryPage   | | ProfilePage|
++------------------+ +------------------+ +------------------+ +------------+
+         |                   |ReadHistory       |  Search   | 
+         |                    Favorites           Category
+         |                    Downloads             |
+         +---------+         +---------+         +---------+         
+                   |                   |                   |         
+                   |                   |                   |         
+                   v                   v                   v         
+                +-----------+      +-----------+      +-----------+  
+                | BookDetails|      | BookDetails|      | BookDetails| 
+                +-----------+      +-----------+      +-----------+  
+                      |                   |                   |      
+                      |                   |                   |      
+                      +-------------------+-------------------+      
+                                          |                          
+                                          v                          
+                                    +-----------+                    
+                                    | BookContent|                   
+                                    +-----------+                    
+                                                                     
+                                                                     
+                                                                     
+
+
+Frequently Asked Questions
+1. Is this app following industry-grade standards?
+
+    Yes, this app follows industry-grade standards by implementing BLoC management with some features also adhering to clean architecture principles.
+
+2. Is this app completed?
+
+    No, many features need to be added. Anyone is welcome to contribute to this project.
+
+3. Can we use this code in our own project?
+
+    Yes, you are free to use this code in your own projects.
+
+4. Does this app follow clean architecture?
+
+    Not entirely, but some features follow clean architecture principles. Implementing clean architecture for the entire app can be time-consuming.
+
+5. What backend is used in this app, and is it secure?
+
+ This app uses NestJS with dedicated authentication features. The backend project can be found ```[here](https://github.com/bivu029/flutter_book_reader_backend_nest).
+
+```
 1. The `AppRoute` class is responsible for defining the app's routes and navigation structure.
 2. The `GoRouter` is initialized with the initial route and various other routes, including routes for authentication, book details, search, and more.
 3. The app uses nested navigators with the `StatefulShellRoute.indexedStack` to handle the main bottom navigation structure.
