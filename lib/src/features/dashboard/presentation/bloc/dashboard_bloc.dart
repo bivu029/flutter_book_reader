@@ -39,7 +39,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<ContinueReadingEvent>(continueMethod);
     on<ConnectivityChangedEvent>(connectivitychangedMethod);
     on<NavigatePageEvent>(navigatToBookDetail);
-
+    on<TodashBoardContinueEvent>(toDasgboardcontinueMethodEvent);
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((List<ConnectivityResult> result) {
@@ -122,7 +122,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   FutureOr<void> continueMethod(
       ContinueReadingEvent event, Emitter<DashboardState> emit) async {
     final bookprogressid = getdatabase.getString('lastid');
-    print("bookprogressid:$bookprogressid");
+
     if (bookprogressid == null) {
       emit(ContinueReadingEmpty());
     } else {
@@ -139,7 +139,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
           emit(ContinuereadState(book: getbook, bookProgress: bookprogress));
         }
       } catch (e) {
-        print("dahbevent erro: $e");
+       
         emit(DashBoardErrorState(erorr: e.toString()));
       }
     }
@@ -159,19 +159,15 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
   FutureOr<void> connectivitychangedMethod(
       ConnectivityChangedEvent event, Emitter<DashboardState> emit) async {
-    // final List<ConnectivityResult> connectivityResult =
-    //     await (Connectivity().checkConnectivity());
-    // This condition is for demo purposes only to explain every connection type.
-// Use conditions which work for your requirements.
     if (event.result.contains(ConnectivityResult.mobile)) {
       emit(const NetworkAvalbleState(msg: 'Mobile NetWork available'));
+      add(ContinueReadingEvent());
       add(DashBoradTrendInitialEvent());
       add(DashBoradEditorInitialEvent());
 
-      add(ContinueReadingEvent());
       // Mobile network available.
     } else if (event.result.contains(ConnectivityResult.wifi)) {
-      print('wifi connndid');
+
       emit(const NetworkAvalbleState(msg: 'wifi available'));
       add(ContinueReadingEvent());
       add(DashBoradTrendInitialEvent());
@@ -210,7 +206,34 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       NavigatePageEvent event, Emitter<DashboardState> emit) async {
     // add(ContinueReadingEvent());
 
-  
     emit(NavigateSucessfull(book: event.book));
+  }
+
+  FutureOr<void> toDasgboardcontinueMethodEvent(
+      TodashBoardContinueEvent event, Emitter<DashboardState> emit) async {
+    emit(TodashBoardContinueLoading());
+    final bookprogressid = getdatabase.getString('lastid');
+   
+    if (bookprogressid == null) {
+      emit(ContinueReadingEmpty());
+    } else {
+      try {
+        final User user = _dashBoardLocalDataSource.getUserName();
+        final bookprogress = user.bookProgress.firstWhereOrNull(
+            (bkprogress) => bkprogress.bookId == bookprogressid);
+
+        if (bookprogress == null) {
+          emit(ContinueReadingEmpty());
+        } else {
+          final getbook = await _dashboardRemoteDataSource.getBook(
+              bookprogressid, 'Bearer ${_user.jwtToken!}');
+          emit(TodashBoardContinueState(
+              book: getbook, bookProgress: bookprogress));
+        }
+      } catch (e) {
+   
+        emit(DashBoardErrorState(erorr: e.toString()));
+      }
+    }
   }
 }

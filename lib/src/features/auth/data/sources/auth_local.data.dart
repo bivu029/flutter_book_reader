@@ -7,7 +7,13 @@ class AuthLocalDataImp {
   final Box<User> box;
   AuthLocalDataImp({required this.box});
   Future<void> saveUser(String email, String idToken, String name,
-      String? photoUrl, String accesstoken) async {
+      String? photoUrl, String accesstoken ,
+      {List<BookProgress> bookProgress= const [],
+      List<FavouriteBooks>favoritbook=const[],
+      List<ReadHistory>readHistory=const[],
+      List<UploadedBooks>uploadedbook=const[],
+      Subscription? subscription
+      }) async {
     try {
       User authModel =User(
         email: email,
@@ -15,6 +21,11 @@ class AuthLocalDataImp {
         name: name,
         photoUrl: photoUrl,
         jwtToken: accesstoken,
+        bookProgress: bookProgress,
+         favoriteBooks:favoritbook ,
+         readHistory:readHistory,
+         subscription: subscription,
+         uplaodedbooks: uploadedbook,
       );
 
 // Use a unique key for each entry if you want to retrieve it later by that key

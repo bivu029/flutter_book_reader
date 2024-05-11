@@ -38,3 +38,4 @@ final class NavigatePageEvent extends DashboardEvent {
 
  const NavigatePageEvent({required this.book});
 }
+final class  TodashBoardContinueEvent extends DashboardEvent{}

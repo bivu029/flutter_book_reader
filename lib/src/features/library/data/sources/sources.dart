@@ -27,7 +27,7 @@ class LibraryRemoteImp implements LibraryRemoteDataSource {
     } on ServerException {
       rethrow;
     } catch (e) {
-      print("getbook lisr:$e");
+    
       // Handle other exceptions here
       throw ServerException(message: e.toString(), statuscode: 500);
     }

@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:bookbazar/src/core/config/config.dart';
+import 'package:bookbazar/src/core/global/all.enitity.dart';
 import 'package:bookbazar/src/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:bookbazar/src/features/library/presentation/bloc/library_bloc.dart';
 
@@ -7,6 +9,7 @@ import 'package:bookbazar/src/features/navigationbar/bloc/navbar_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 
 class MainNavigationBarPage extends StatefulWidget {
   const MainNavigationBarPage({
@@ -31,11 +34,16 @@ class _MainNavigationBarPageState extends State<MainNavigationBarPage> {
   void navigate(BuildContext context, int index) {
     final path =
         widget.navigationShell.route.branches[index].defaultRoute?.path;
-    print("path:$path");
+
     if (path == '/library') {
       context.read<LibraryBloc>().add(const GetBookListHisEvent());
     } else if (path == "/dashboard") {
-      context.read<DashboardBloc>().add(ContinueReadingEvent());
+      final authdatabox = DependencyInjection.sl<Box<User>>();
+      final authdata = authdatabox.get('user');
+      if (authdata!.bookProgress.isNotEmpty) {
+  
+        context.read<DashboardBloc>().add(TodashBoardContinueEvent());
+      }
     }
     widget.navigationShell.goBranch(
       index,
@@ -47,7 +55,7 @@ class _MainNavigationBarPageState extends State<MainNavigationBarPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<NavbarBloc, NavbarState>(
       builder: (context, state) {
-        print("navigationsate :$state");
+      
         return Scaffold(
           body: widget.navigationShell,
 

@@ -45,7 +45,13 @@ class AuthRemoteImp extends AuthRemoteDataSource {
 
         //save user data in database using isar
         await _authLocalDataImp.saveUser(result.email, result.idToken!,
-            result.name, result.photoUrl, result.jwtToken!);
+            result.name, result.photoUrl, result.jwtToken!,
+             bookProgress: result.bookProgress,
+             favoritbook: result.favoriteBooks,
+             readHistory:result.readHistory ,
+             subscription:result.subscription ,
+             uploadedbook: result.uplaodedbooks,
+             );
         //GET data from local storage
         final data = _authLocalDataImp.getLocalUser();
 
@@ -54,7 +60,12 @@ class AuthRemoteImp extends AuthRemoteDataSource {
             idToken: data.idToken,
             name: data.name,
             photoUrl: data.photoUrl,
-            jwtToken: data.jwtToken
+            jwtToken: data.jwtToken,
+            bookProgress: data.bookProgress,
+            readHistory: data.readHistory,
+            favoriteBooks: data.favoriteBooks,
+            subscription: data.subscription,
+            uplaodedbooks: data.uplaodedbooks
             );
       } else {
         throw const ServerException(

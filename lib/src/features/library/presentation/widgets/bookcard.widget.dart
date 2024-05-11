@@ -27,7 +27,7 @@ class _BookCardWidgetState extends State<BookCardWidget>    {
   Widget build(BuildContext context) {
     return BlocConsumer<LibraryBloc, LibraryState>(
       listener: (context, state) async {
-        print("library state;$state");
+       
         if (state is FromLibrayToBookdetailSucesss) {
           if (kIsWeb) {
             context.goNamed(RoutesNameEnum.book.name,
@@ -44,7 +44,7 @@ class _BookCardWidgetState extends State<BookCardWidget>    {
         }
       },
       builder: (context, state) {
-        print("build :$state");
+      
         switch (state.runtimeType) {
           case LibrayLoading:
             return ListView.builder(
@@ -88,7 +88,7 @@ class LibrayBookList extends StatelessWidget {
   final BookProgress bookProgress;
   @override
   Widget build(BuildContext context) {
-    print(book.id);
+   
     const String imag =
         "https://gravatar.com/avatar/067797c879fd3e9f9b7f006aebf98974?s=400&d=robohash&r=x";
     final double bookparcent =

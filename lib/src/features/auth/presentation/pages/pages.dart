@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:bookbazar/src/core/global/all.enitity.dart';
 import 'package:bookbazar/src/core/routes/names.dart';
 
+
 import 'package:go_router/go_router.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:bookbazar/src/core/api/api.dart';
@@ -118,9 +119,7 @@ class _AuthPageState extends State<AuthPage> {
                   ));
                   await _googleSignIn.signOut();
                 } else if (state is AuthSucessState) {
-                  GoRouter.of(context).pushReplacementNamed(
-                      RoutesNameEnum.dashboard.name,
-                     );
+               GoRouter.of(context).go(RoutesNameEnum.dashboard.path);
                 }
               },
               builder: (context, state) {

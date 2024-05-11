@@ -16,17 +16,30 @@ class ContinueReadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DashboardBloc, DashboardState>(
+    return BlocConsumer<DashboardBloc, DashboardState>(
+      listener: (context, state) {
+       
+      },
       buildWhen: (previous, current) {
-        return current is ContinueReadingEmpty || current is ContinuereadState;
+   
+        return current is ContinueReadingEmpty
+         || current is ContinuereadState
+         ||  current is TodashBoardContinueState ;
       },
       builder: (context, state) {
-        print("continue:$state");
+      
         switch (state.runtimeType) {
           case ContinueReadingEmpty:
             return const SizedBox();
           case ContinuereadState:
             final continuereadstate = state as ContinuereadState;
+
+            return ContinueRead(
+              book: continuereadstate.book,
+              bookProgress: continuereadstate.bookProgress,
+            );
+            case TodashBoardContinueState:
+            final continuereadstate = state as TodashBoardContinueState;
 
             return ContinueRead(
               book: continuereadstate.book,

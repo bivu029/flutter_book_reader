@@ -80,3 +80,12 @@ class NavigateSucessfull extends DashboardState {
  const NavigateSucessfull({required this.book});
 
 }
+
+final class ContinueLoading extends DashboardState{}
+final class TodashBoardContinueState extends DashboardState{
+   final Book book;
+  final BookProgress bookProgress;
+
+ const TodashBoardContinueState({required this.book, required this.bookProgress});
+}
+final class TodashBoardContinueLoading extends DashboardState{}

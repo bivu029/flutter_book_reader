@@ -95,9 +95,7 @@ class AppRoute {
                 BlocProvider(
                   create: (_) => DependencyInjection.sl<BookBloc>(),
                 ),
-                BlocProvider(
-                  create: (_) => DependencyInjection.sl<DashboardBloc>(),
-                )
+            
               ],
               child: const SearchPage(),
             ),
@@ -120,9 +118,7 @@ class AppRoute {
                 BlocProvider(
                   create: (_) => DependencyInjection.sl<ReviewBloc>(),
                 ),
-                BlocProvider(
-                  create: (_) => DependencyInjection.sl<DashboardBloc>(),
-                ),
+              
               ],
               child: BookDetail(book: book!),
             ));

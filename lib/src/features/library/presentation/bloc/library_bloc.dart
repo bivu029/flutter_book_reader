@@ -38,7 +38,7 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
       if (user!.bookProgress.isNotEmpty) {
         user.bookProgress
             .sort((a, b) => b.lastReadTimestamp.compareTo(a.lastReadTimestamp));
-        print(user.bookProgress);
+     
         final GetBookList getBookList = GetBookList(bookidList: []);
         for (var element in user.readHistory) {
           getBookList.bookidList.add(element.bookId);
@@ -52,7 +52,7 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
         emit(EmptyLibrary());
       }
     } catch (e) {
-      print("libraybloc:$e");
+   
       emit(LibraryError(msg: e.toString()));
     }
   }
