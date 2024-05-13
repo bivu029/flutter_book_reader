@@ -8,6 +8,7 @@
 </p>
 
 A beautifully crafted book reader application built with Flutter, Google's open-source UI toolkit for building natively compiled, multi-platform applications from a single codebase.
+[Watch Flutter Book Reader in action on YouTube!](https://youtube.com/shorts/o0c6o-XoYdA?feature=share)
 
 ## Features
 
