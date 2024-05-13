@@ -18,6 +18,17 @@ A beautifully crafted book reader application built with Flutter, Google's open-
 - 🔁 **Orientation Support**: Read comfortably in both portrait and landscape modes.
 - 🔤 **Typography Customization**: Adjust font size, style, and background color to suit your preferences.
 
+## App Screenshots
+
+<p align="center">
+<img src="https://i.ibb.co/znsc4x2/Whats-App-Image-2024-05-13-at-07-51-52-7f946aea.jpg" alt="App Screenshot 1" width="150">
+<img src="https://i.ibb.co/qR54r75/Whats-App-Image-2024-05-13-at-07-51-49-75444598.jpg" alt="App Screenshot 2" width="150">
+<img src="https://i.ibb.co/1s1JVDS/Whats-App-Image-2024-05-13-at-07-51-53-92e86905.jpg" alt="App Screenshot 3" width="150">
+<img src="https://i.ibb.co/xzrLZ6R/Whats-App-Image-2024-05-13-at-07-51-54-4e67158a.jpg" alt="App Screenshot 4" width="150">
+<img src="https://i.ibb.co/Cs8KGbk/Whats-App-Image-2024-05-13-at-07-51-56-3294d288.jpg" alt="App Screenshot 5" width="150">
+<img src="https://i.ibb.co/tXqV0H9/Whats-App-Image-2024-05-13-at-07-51-54-968205f5.jpg" alt="App Screenshot 6" width="150">
+</p>
+
 ## Architecture
 
 This app uses the BLoC (Business Logic Component) pattern for state management, which helps to separate the presentation layer from the business logic. The main bottom navigation structure is built using the provided code, which utilizes the GoRouter library for routing and navigation.
